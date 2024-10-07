@@ -1,0 +1,22 @@
+/* responiveness import media queries */
+@import "/views/css/responsive.css";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* vind een font past bij je! */
+    /* font-family: "Helvetica", Sans-Serif; */
+    /* background image? */
+    /* background-image: url("../images/background-image.jpeg"); */
+    width: 100vw;
+    height: 100vh;
+}
+
+a {
+    color: #1573df; 
+}
+
