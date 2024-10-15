@@ -11,6 +11,18 @@ class ProjectController {
                     <h2 class\"project-title\">Titel</h2>
                     <p>Descriptie</p>
                     <button href=\"\">GITHUB LINK</button>
+                </div><div class=\"project-box\">
+                    <h2 class\"project-title\">Titel</h2>
+                    <p>Descriptie</p>
+                    <button href=\"\">GITHUB LINK</button>
+                </div><div class=\"project-box\">
+                    <h2 class\"project-title\">Titel</h2>
+                    <p>Descriptie</p>
+                    <button href=\"\">GITHUB LINK</button>
+                </div><div class=\"project-box\">
+                    <h2 class\"project-title\">Titel</h2>
+                    <p>Descriptie</p>
+                    <button href=\"\">GITHUB LINK</button>
                 </div>
             </div>
         </main>";

@@ -1,14 +1,33 @@
+
+
 /* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {}
+@media only screen and (max-width: 600px) {
+  .project-section {
+    grid-template-columns: 1fr !important; /* Display 1 project per row */
+  }
+
+  .project-box {
+    width: 100% !important; /* Ensure full width for each project box */
+  }
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {}
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .project-section {
+    grid-template-columns: 1fr !important; /* Still display 1 project per row */
+  }
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+  .project-section {
+    grid-template-columns: repeat(2, 1fr) !important; /* Switch to 2 columns */
+  }
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 992px) {
+  .project-section {
+    grid-template-columns: repeat(4, 1fr) !important; /* Default: 4 columns */
+  }
+}
