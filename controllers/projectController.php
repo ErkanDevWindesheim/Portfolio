@@ -15,20 +15,14 @@ class ProjectController {
         $projects = $this->model->getAllProjects();
 
         $title = "Project";
-        $content = "
-        <main class=\"main-2\">
-            <h1>Projects</h1>
-            <div class=\"project-section\">
-                <div class=\"project-box\">
-                    <h2 class\"project-title\">Titel</h2>
-                    <p>Descriptie</p>
-                    <button href=\"\">BEKIJK PROJECT</button>
-                </div>
-            </div>
-        </main>";
+        // Output buffering gebruiken om de view-output op te slaan als string
+        ob_start();
+        include __DIR__ . '/../views/php/projects.view.php';
+        $content = ob_get_clean(); // Sla de output op in $content
         
         include(__DIR__ . "/../views/index.view.php");
     }
+
 
     public function AdminPanel() {
         // Laad de view die het formulier bevat

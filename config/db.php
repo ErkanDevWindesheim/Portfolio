@@ -1,4 +1,4 @@
-<?
+<?php
 
 define('DB_HOST', 'localhost');  // host, meestal localhost
 define('DB_NAME', 'portfoliodb');  // Naam van je database
