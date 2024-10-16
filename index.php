@@ -1,5 +1,8 @@
 <?php
 
+// ROUTER
+
+
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $url = rtrim($url, '/');
 $url = strtolower($url);
@@ -23,9 +26,13 @@ switch ($url) {
     case '/contact':
         require(__DIR__ . "/controllers/contactController.php");
         $ContactPagina = new ContactController();
-        $ContactPagina->index();
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $ContactPagina->create();
+        } else {
+            $ContactPagina->index();
+        }
         break;
-        
     case '/overmij':
         require(__DIR__ . "/controllers/OverMijController.php");
         $OverMijPagina = new OverMijController();

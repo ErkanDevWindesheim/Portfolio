@@ -14,7 +14,7 @@ class ProjectController {
     public function index(): void {
         $projects = $this->model->getAllProjects();
 
-        $title = "Project";
+        $title = "Projects";
         // Output buffering gebruiken om de view-output op te slaan als string
         ob_start();
         include __DIR__ . '/../views/php/projects.view.php';
@@ -54,12 +54,6 @@ class ProjectController {
             $projectLink = $_POST['project_link'] ?? '';
             $githubLink = $_POST['github_link'] ?? '';
 
-            // Validatie van de ingevoerde gegevens (optioneel)
-            if (empty($title) || empty($description)) {
-                // Toon een foutmelding als er verplichte velden ontbreken
-                echo "Title and Description are required.";
-                return;
-            }
 
             // Voeg het project toe via het model
             $success = $this->model->addProject($title, $description, $technologies, $projectLink, $githubLink);

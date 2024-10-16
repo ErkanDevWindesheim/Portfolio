@@ -6,8 +6,8 @@
                 <div class="project-box">
                     <h2 class="project-title"><?= htmlspecialchars($project['title']); ?></h2>
                     <p><?= htmlspecialchars($project['description']); ?></p>
-                    <a href="<?= htmlspecialchars($project['project_link']); ?>" target="_blank">
-                        <button>BEKIJK PROJECT</button>
+                    <a href="/project/details?id=<?= htmlspecialchars($project['id']); ?>">
+                        <button>Bekijk Project</button>
                     </a>
                 </div>
             <?php endforeach; ?>

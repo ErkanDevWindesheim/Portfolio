@@ -107,8 +107,11 @@ main {
   flex: 2;
   gap: 30px;
   background-color: gray;
-  width: 10rem;
-  height: 10rem;
+  width: fit-content;
+  height: fit-content;
+  padding: 2rem;
+  border-radius: 20%;
+  box-shadow: 5px 5px #000;
 }
 
 .contact-section {
