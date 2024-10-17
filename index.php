@@ -54,7 +54,6 @@ switch ($url) {
         $adminPagina = new AdminController();
         $adminPagina->createProject();
         break;
-    
     case '/admin/skill/create':
         require(__DIR__ . "/controllers/adminController.php");
         $adminPagina = new AdminController();

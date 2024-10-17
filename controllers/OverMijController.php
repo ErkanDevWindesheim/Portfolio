@@ -26,8 +26,13 @@ class OverMijController {
             <div class=\"content-container\">
                 <div class=\"bio\">
                     <h2>Erkan Aslantas</h2>
-                    <p><strong>Bio:</strong> Achtergrond</p>
-                    <button>Download CV</button>
+                    <p><strong>Bio:</strong> Naam: Erkan Aslantaws
+                        Geboortedatum: 13 juli 2001
+                        Geboorteplaats: Blaricum, Nederland
+                        Nationaliteit: Turks</p>
+                    <a href=\"/media/CV_Erkan_Aslantas.pdf\" download>
+                        <button>CV downloaden</button>
+                    </a>
                 </div>
                 <div class=\"space\"></div>
                 <div class=\"skills\">
