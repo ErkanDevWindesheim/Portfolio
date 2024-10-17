@@ -65,7 +65,16 @@ switch ($url) {
         $adminPagina = new AdminController();
         $adminPagina->editProject();
         break;
-        
+    case '/admin/deleteproject':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->deleteProject();
+        break;
+    case '/admin/deleteskill':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->deleteSkill();
+        break;  
     case '/admin/editskill':
         require(__DIR__ . "/controllers/adminController.php");
         $adminPagina = new AdminController();

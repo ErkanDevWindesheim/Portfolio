@@ -62,14 +62,14 @@ class AdminController {
                 <td><a href='" . htmlspecialchars($project['project_link']) . "' target='_blank'>Bekijk Project</a></td>
                 <td><a href='" . htmlspecialchars($project['github_link']) . "' target='_blank'>Bekijk op GitHub</a></td>
                 <td class='actions'>
-                    <a href='/admin/editProject?id=" . htmlspecialchars($project['id']) . "'>Bewerk</a>
-                    <a href='/admin/deleteProject?id=" . htmlspecialchars($project['id']) . "' onclick='return confirm(\"Weet je zeker dat je dit project wilt verwijderen?\")'>Verwijder</a>
+                    <a href='/admin/editproject?id=" . htmlspecialchars($project['id']) . "'>Bewerk</a>
+                    <a href='/admin/deleteproject?id=" . htmlspecialchars($project['id']) . "' onclick='return confirm(\"Weet je zeker dat je dit project wilt verwijderen?\")'>Verwijder</a>
                 </td>
             </tr>";
         }
-    
+        
         $content .= "</table><br><br>";
-    
+        
         // Vaardigheid toevoegen formulier
         $content .= "
         <h2>Voeg een Vaardigheid Toe</h2>
@@ -92,8 +92,8 @@ class AdminController {
             <tr>
                 <td>" . htmlspecialchars($skill['skill_name']) . "</td>
                 <td class='actions'>
-                    <a href='/admin/editSkill?id=" . htmlspecialchars($skill['id']) . "'>Bewerk</a>
-                    <a href='/admin/deleteSkill?id=" . htmlspecialchars($skill['id']) . "' onclick='return confirm(\"Weet je zeker dat je deze vaardigheid wilt verwijderen?\")'>Verwijder</a>
+                    <a href='/admin/editskill?id=" . htmlspecialchars($skill['id']) . "'>Bewerk</a>
+                    <a href='/admin/deleteskill?id=" . htmlspecialchars($skill['id']) . "' onclick='return confirm(\"Weet je zeker dat je deze vaardigheid wilt verwijderen?\")'>Verwijder</a>
                 </td>
             </tr>";
         }
@@ -105,6 +105,7 @@ class AdminController {
 
     // Verwerking van project toevoegen
     public function createProject(): void {
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $title = $_POST['title'] ?? '';
             $description = $_POST['description'] ?? '';
@@ -130,27 +131,31 @@ class AdminController {
     }
 
     public function deleteProject(): void {
-        $id = $_GET['id'] ?? null;
-        if ($id) {
+        $id = $_GET['id'];
+        if ($id && is_numeric($id)) {
             $this->projectModel->deleteProject($id);
+            header("Location: /admin?deleted");
+            exit;
         }
         header("Location: /admin?deleted");
         exit;
     }
 
     public function deleteSkill(): void {
-        $id = $_GET['id'] ?? null;
-        if ($id) {
+        $id = $_GET['id'];
+        if (is_numeric($id)) {
             $this->skillModel->deleteSkill($id);
+            header("Location: /admin?deleted");
         }
         header("Location: /admin?deleted");
         exit;
     }
 
     public function editProject(): void {
-        $id = $_GET['id'] ?? null;
         
-        if ($id && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_GET['id'];
+
+        if (is_numeric($id) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             // Haal alle benodigde waarden op vanuit het formulier
             $title = $_POST['title'];
             $description = $_POST['description'];
@@ -176,24 +181,26 @@ class AdminController {
         // Laad de bewerkpagina voor het project
         ob_start(); // Start output buffering
         ?>
-        <form action="/admin/editProject?id=<?= $project['id'] ?>" method="POST">
-            <label for="title">Titel:</label>
-            <input type="text" id="title" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
-            
-            <label for="description">Beschrijving:</label>
-            <textarea id="description" name="description" required><?= htmlspecialchars($project['description']) ?></textarea>
-    
-            <label for="technologies_used">Technologieën:</label>
-            <input type="text" id="technologies_used" name="technologies_used" value="<?= htmlspecialchars($project['technologies_used']) ?>" required>
-    
-            <label for="project_link">Project Link:</label>
-            <input type="url" id="project_link" name="project_link" value="<?= htmlspecialchars($project['project_link']) ?>" placeholder="https://example.com" required>
-    
-            <label for="github_link">GitHub Link:</label>
-            <input type="url" id="github_link" name="github_link" value="<?= htmlspecialchars($project['github_link']) ?>" placeholder="https://github.com/example" required>
-    
-            <button type="submit">Update Project</button>
-        </form>
+        <main class="main-2">
+            <form action="/admin/editProject?id=<?= $project['id'] ?>" method="POST">
+                <label for="title">Titel:</label>
+                <input type="text" id="title" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
+                
+                <label for="description">Beschrijving:</label>
+                <textarea id="description" name="description" required><?= htmlspecialchars($project['description']) ?></textarea>
+        
+                <label for="technologies_used">Technologieën:</label>
+                <input type="text" id="technologies_used" name="technologies_used" value="<?= htmlspecialchars($project['technologies_used']) ?>" required>
+        
+                <label for="project_link">Project Link:</label>
+                <input type="url" id="project_link" name="project_link" value="<?= htmlspecialchars($project['project_link']) ?>" placeholder="https://example.com" required>
+        
+                <label for="github_link">GitHub Link:</label>
+                <input type="url" id="github_link" name="github_link" value="<?= htmlspecialchars($project['github_link']) ?>" placeholder="https://github.com/example" required>
+        
+                <button type="submit">Update Project</button>
+            </form>
+        </main>
         <?php
         $content = ob_get_clean(); // Verkrijg de output en stop met bufferen
     
@@ -202,8 +209,8 @@ class AdminController {
     }
 
     public function editSkill(): void {
-        $id = $_GET['id'] ?? null;
-        if ($id && $_SERVER['REQUEST_METHOD'] === 'POST') {
+        $id = $_GET['id'];
+        if (is_numeric($id) && $_SERVER['REQUEST_METHOD'] === 'POST') {
             $skill_name = $_POST['skill_name'];
             $this->skillModel->updateSkill($id, $skill_name);
             header("Location: /admin?successEdit");
@@ -217,6 +224,19 @@ class AdminController {
             exit;
         }
 
-        include(__DIR__ . '/../views/php/editSkill.view.php');
+        ob_start();
+        ?>
+        <main class="main-2">
+            <form action="/admin/editSkill?id=<?= htmlspecialchars($skill['id']) ?>" method="POST" class="form-container">
+                <label for="skill_name">Naam Vaardigheid:</label>
+                <input type="text" id="skill_name" name="skill_name" value="<?= htmlspecialchars($skill['skill_name']) ?>"
+                required>
+                <button type="submit">Update Skill</button>
+            </form>
+        </main>
+        <?php
+        $content = ob_get_clean();
+
+        include(__DIR__ . '/../views/index.view.php');
     }
 }

@@ -388,13 +388,13 @@ td {
 }
 
 tr, table, td {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
-.actions td {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 /* Admin pagina stijlen */
 .admin-container {
