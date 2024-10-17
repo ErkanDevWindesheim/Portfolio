@@ -23,26 +23,6 @@ class ProjectController {
         include(__DIR__ . "/../views/index.view.php");
     }
 
-
-    public function AdminPanel() {
-        // Laad de view die het formulier bevat
-
-        // $title = "Project";
-        // $content = "
-        // <main class=\"main-2\">
-        //     <h1>Projects</h1>
-        //     <div class=\"project-section\">
-        //         <div class=\"project-box\">
-        //             <h2 class\"project-title\">Titel</h2>
-        //             <p>Descriptie</p>
-        //             <button href=\"\">BEKIJK PROJECT</button>
-        //         </div>
-        //     </div>
-        // </main>";
-
-        require_once __DIR__ . "/../views/index.view.php";
-    }
-
     // Verwerk de formulierdata en voeg een project toe
     public function add() {
         // Controleer of het formulier is verzonden via POST
@@ -70,7 +50,8 @@ class ProjectController {
             }
         } else {
             // Als het formulier niet is verzonden, toon het formulier opnieuw
-            $this->AdminPanel();
+            // $this->AdminPanel();
+            // momenteel niks.
         }
     }
 
@@ -129,6 +110,40 @@ class ProjectController {
         } else {
             echo "Failed to delete project.";
         }
+    }
+
+    public function showProjectDetails($id): void {
+        // Haal project op op basis van het ID
+        $project = $this->model->getProjectById($id);
+    
+        // Als het project niet gevonden is, toon een foutmelding of 404
+        if (!$project) {
+            header("HTTP/1.0 404 Not Found");
+            echo "Project niet gevonden";
+            return;
+        }
+    
+        // Stel de paginatitel en content in
+        $title = "Project Details";
+    
+        // Bouw de HTML-content op voor de projectdetails
+        $content = "
+        <main class=\"main-2\">
+            <h1 class=\"project-title\">" . htmlspecialchars($project['title']) . "</h1>
+            <div class=\"project-details\">
+                <div class=\"project-info\">
+                    <p><strong>Beschrijving:</strong> " . htmlspecialchars($project['description']) . "</p>
+                    <p><strong>Technologieën:</strong> " . htmlspecialchars($project['technologies_used'] ?? 'N.v.t.') . "</p>
+                    <div class=\"project-links\">
+                        <a href=\"" . htmlspecialchars($project['project_link']) . "\" class=\"project-btn\" target=\"_blank\">Bekijk Project</a>
+                        <a href=\"" . htmlspecialchars($project['github_link']) . "\" class=\"github-btn\" target=\"_blank\">Bekijk op GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </main>";
+    
+        // Laad de view met de inhoud
+        include(__DIR__ . "/../views/index.view.php");
     }
 
 

@@ -6,7 +6,7 @@
                 <div class="project-box">
                     <h2 class="project-title"><?= htmlspecialchars($project['title']); ?></h2>
                     <p><?= htmlspecialchars($project['description']); ?></p>
-                    <a href="/project/details?id=<?= htmlspecialchars($project['id']); ?>">
+                    <a href="/project?id=<?= htmlspecialchars($project['id']); ?>">
                         <button>Bekijk Project</button>
                     </a>
                 </div>
@@ -15,4 +15,4 @@
             <p>Geen projecten gevonden.</p>
         <?php endif; ?>
     </div>
-</main>ss
+</main>

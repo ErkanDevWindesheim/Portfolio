@@ -1,1 +1,0 @@
-<?php header(header: "location: /contact?"); ?>

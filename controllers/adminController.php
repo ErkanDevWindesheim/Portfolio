@@ -1,0 +1,222 @@
+<?php
+require_once __DIR__ . '/../models/projectsModel.php';
+require_once __DIR__ . '/../models/skillsModel.php';
+
+class AdminController {
+
+    private $projectModel;
+    private $skillModel;
+
+    public function __construct() {
+        $this->projectModel = new ProjectModel();
+        $this->skillModel = new SkillModel();
+    }
+    // De admin-pagina waar projecten en skills kunnen worden toegevoegd
+    public function index(): void {
+        $title = "Admin Paneel";
+        $projects = $this->projectModel->getAllProjects();
+        $skills = $this->skillModel->getAllSkills();
+    
+        // Hoofdinformatie container
+        $content = "
+        <main class='main-2'>
+            <h1>Admin Paneel</h1>
+            
+            <h2>Voeg een Project Toe</h2>
+            <form action='/admin/project/create' method='POST' class='form-container'>
+                <label for='title'>Titel:</label>
+                <input type='text' id='title' name='title' required>
+    
+                <label for='description'>Beschrijving:</label>
+                <textarea id='description' name='description' required></textarea>
+    
+                <label for='technologies_used'>Technologieën:</label>
+                <input type='text' id='technologies_used' name='technologies_used' required>
+                
+                <label for='project_link'>Project Link:</label>
+                <input type='url' id='project_link' name='project_link' placeholder='https://example.com' required>
+    
+                <label for='github_link'>GitHub Link:</label>
+                <input type='url' id='github_link' name='github_link' placeholder='https://github.com/example' required>
+    
+                <button type='submit'>Voeg Project Toe</button>
+            </form>
+    
+            <h2>Projecten Overzicht</h2>
+            <table>
+                <tr>
+                    <th>Titel</th>
+                    <th>Beschrijving</th>
+                    <th>Technologieën</th>
+                    <th>Project Link</th>
+                    <th>GitHub Link</th>
+                    <th>Acties</th>
+                </tr>";
+    
+        foreach ($projects as $project) {
+            $content .= "
+            <tr>
+                <td>" . htmlspecialchars($project['title']) . "</td>
+                <td>" . htmlspecialchars($project['description']) . "</td>
+                <td>" . htmlspecialchars($project['technologies_used']) . "</td>
+                <td><a href='" . htmlspecialchars($project['project_link']) . "' target='_blank'>Bekijk Project</a></td>
+                <td><a href='" . htmlspecialchars($project['github_link']) . "' target='_blank'>Bekijk op GitHub</a></td>
+                <td class='actions'>
+                    <a href='/admin/editProject?id=" . htmlspecialchars($project['id']) . "'>Bewerk</a>
+                    <a href='/admin/deleteProject?id=" . htmlspecialchars($project['id']) . "' onclick='return confirm(\"Weet je zeker dat je dit project wilt verwijderen?\")'>Verwijder</a>
+                </td>
+            </tr>";
+        }
+    
+        $content .= "</table><br><br>";
+    
+        // Vaardigheid toevoegen formulier
+        $content .= "
+        <h2>Voeg een Vaardigheid Toe</h2>
+        <form action='/admin/skill/create' method='POST' class='form-container'>
+            <label for='skill_name'>Naam Vaardigheid:</label>
+            <input type='text' id='skill_name' name='skill_name' required>
+    
+            <button type='submit'>Voeg Vaardigheid Toe</button>
+        </form>
+    
+        <h2>Vaardigheden Overzicht</h2>
+        <table>
+            <tr>
+                <th>Naam</th>
+                <th>Acties</th>
+            </tr>";
+    
+        foreach ($skills as $skill) {
+            $content .= "
+            <tr>
+                <td>" . htmlspecialchars($skill['skill_name']) . "</td>
+                <td class='actions'>
+                    <a href='/admin/editSkill?id=" . htmlspecialchars($skill['id']) . "'>Bewerk</a>
+                    <a href='/admin/deleteSkill?id=" . htmlspecialchars($skill['id']) . "' onclick='return confirm(\"Weet je zeker dat je deze vaardigheid wilt verwijderen?\")'>Verwijder</a>
+                </td>
+            </tr>";
+        }
+    
+        $content .= "</table></main>"; // Sluit de container
+    
+        include(__DIR__ . '/../views/index.view.php');
+    }
+
+    // Verwerking van project toevoegen
+    public function createProject(): void {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $title = $_POST['title'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $technologies_used = $_POST['technologies_used'] ?? '';
+            $project_link = $_POST['project_link'] ?? '';
+            $github_link = $_POST['github_link'] ?? '';
+
+            $this->projectModel->addProject($title, $description, $technologies_used, $project_link, $github_link);
+            header('Location: /admin?succes');
+            exit;
+        }
+    }
+
+    // Verwerking van skill toevoegen
+    public function createSkill(): void {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $name = $_POST['skill_name'] ?? '';
+
+            $this->skillModel->addSkill($name);
+            header('Location: /admin?succes');
+            exit;
+        }
+    }
+
+    public function deleteProject(): void {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $this->projectModel->deleteProject($id);
+        }
+        header("Location: /admin?deleted");
+        exit;
+    }
+
+    public function deleteSkill(): void {
+        $id = $_GET['id'] ?? null;
+        if ($id) {
+            $this->skillModel->deleteSkill($id);
+        }
+        header("Location: /admin?deleted");
+        exit;
+    }
+
+    public function editProject(): void {
+        $id = $_GET['id'] ?? null;
+        
+        if ($id && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Haal alle benodigde waarden op vanuit het formulier
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $technologies_used = $_POST['technologies_used'];
+            $project_link = $_POST['project_link'];
+            $github_link = $_POST['github_link'];
+    
+            // Roep de updateProject functie aan met alle benodigde parameters
+            $this->projectModel->updateProject($id, $title, $description, $technologies_used, $project_link, $github_link);
+            
+            // Verwijs terug naar de admin pagina
+            header("Location: /admin?successEdit");
+            exit;
+        }
+    
+        // Haal het project op om voor te vullen in het formulier
+        $project = $this->projectModel->getProjectById($id);
+        if (!$project) { // Controleer of het project bestaat
+            header("HTTP/1.0 404 Not Found"); // Stuur 404 als het project niet bestaat
+            exit;
+        }
+    
+        // Laad de bewerkpagina voor het project
+        ob_start(); // Start output buffering
+        ?>
+        <form action="/admin/editProject?id=<?= $project['id'] ?>" method="POST">
+            <label for="title">Titel:</label>
+            <input type="text" id="title" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
+            
+            <label for="description">Beschrijving:</label>
+            <textarea id="description" name="description" required><?= htmlspecialchars($project['description']) ?></textarea>
+    
+            <label for="technologies_used">Technologieën:</label>
+            <input type="text" id="technologies_used" name="technologies_used" value="<?= htmlspecialchars($project['technologies_used']) ?>" required>
+    
+            <label for="project_link">Project Link:</label>
+            <input type="url" id="project_link" name="project_link" value="<?= htmlspecialchars($project['project_link']) ?>" placeholder="https://example.com" required>
+    
+            <label for="github_link">GitHub Link:</label>
+            <input type="url" id="github_link" name="github_link" value="<?= htmlspecialchars($project['github_link']) ?>" placeholder="https://github.com/example" required>
+    
+            <button type="submit">Update Project</button>
+        </form>
+        <?php
+        $content = ob_get_clean(); // Verkrijg de output en stop met bufferen
+    
+        // Dit geeft de content weer, zorg ervoor dat je deze code toevoegt aan je index.php of het juiste view-bestand
+        include(__DIR__ . '/../views/index.view.php'); // Zorg ervoor dat je de juiste view opneemt
+    }
+
+    public function editSkill(): void {
+        $id = $_GET['id'] ?? null;
+        if ($id && $_SERVER['REQUEST_METHOD'] === 'POST') {
+            $skill_name = $_POST['skill_name'];
+            $this->skillModel->updateSkill($id, $skill_name);
+            header("Location: /admin?successEdit");
+            exit;
+        }
+
+        $skill = $this->skillModel->getSkillById($id);
+
+        if (!$skill) {
+            header("HTTP/1.0 404 Not Found"); // Stuur 404 als de vaardigheid niet bestaat
+            exit;
+        }
+
+        include(__DIR__ . '/../views/php/editSkill.view.php');
+    }
+}

@@ -64,10 +64,71 @@ main {
   padding: 35px;
 }
 
+.main-2 form {
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.main-2 form label {
+  font-weight: bold;
+}
+
+.main-2 form input,
+.main-2 form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.main-2 form button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.main-2 form button:hover {
+  background-color: #0056b3;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+/* Skills lijst stijl */
+.skills-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
 .bio-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.skills-list li {
+  background-color: #f1f1f1;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 .bio-section h1 {
@@ -99,6 +160,12 @@ main {
   padding: 20px;
 }
 
+h1.project-title {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
 .project-box {
   display: flex;
   align-items: center;
@@ -114,12 +181,54 @@ main {
   box-shadow: 5px 5px #000;
 }
 
+.project-details {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.project-info {
+  text-align: center;
+}
+
+.project-info p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
 .contact-section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 20px;
+}
+
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.project-links a {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+.project-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.github-btn {
+  background-color: #333;
+  color: #fff;
 }
 
 .contact-box {
@@ -167,7 +276,7 @@ main {
 .bio button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4A4A4A;
+  background-color: #4a4a4a;
   color: white;
   border: none;
   border-radius: 5px;
@@ -215,10 +324,142 @@ main {
 
 .skill-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive skill list */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(150px, 1fr)
+  ); /* Responsive skill list */
   gap: 20px;
 }
 
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+tr {
+  padding: 20px;
+}
+
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+td {
+  max-width: 200px;
+}
+
+tr, table, td {
+  padding: 20px;
+}
+
+.actions td {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Admin pagina stijlen */
+.admin-container {
+  max-width: 800px; /* Maximum breedte voor de admin inhoud */
+  margin: 0 auto; /* Centreert de container horizontaal */
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-container h1, .admin-container h2 {
+  text-align: center; /* Center headings in de admin container */
+}
+
+.admin-container form {
+  margin: 20px 0;
+}
+
+/* Tabellen styling */
+.admin-container table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-collapse: collapse;
+}
+
+.admin-container th, .admin-container td {
+  padding: 100px;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+.admin-container th {
+  background-color: #007bff; /* Kop achtergrondkleur */
+  color: white; /* Kop tekstkleur */
+}
+
+.admin-container tr {
+  padding: 20px;
+  background-color: #f2f2f2; /* Afwisselende rij achtergrondkleur */
+}
+
+.admin-container tr:nth-child(even) {
+  background-color: #f2f2f2; /* Afwisselende rij achtergrondkleur */
+}
+
+.admin-container .actions {
+  display: flex;
+  gap: 10px; /* Ruimte tussen knoppen */
+}
+
+.admin-container a {
+  text-decoration: none;
+  color: #007bff;
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.admin-container a:hover {
+  background-color: #007bff;
+  color: white;
+}
 
 /* Footer */
 footer {

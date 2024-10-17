@@ -20,7 +20,12 @@ switch ($url) {
     case '/projects':
         require(__DIR__ . "/controllers/projectController.php");
         $ProjectPagina = new ProjectController();
-        $ProjectPagina->index();
+        // Check of een 'id' parameter aanwezig is in de URL
+        if (isset($_GET['id'])) {
+            $ProjectPagina->showProjectDetails($_GET['id']);
+        } else {
+            $ProjectPagina->index();  // Als er geen ID is, laad je alle projecten
+        }
         break;
         
     case '/contact':
@@ -38,7 +43,34 @@ switch ($url) {
         $OverMijPagina = new OverMijController();
         $OverMijPagina->index();
         break;
+    case '/admin':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->index();
+        break;
+    
+    case '/admin/project/create':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->createProject();
+        break;
+    
+    case '/admin/skill/create':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->createSkill();
+        break;
+    case '/admin/editproject':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->editProject();
+        break;
         
+    case '/admin/editskill':
+        require(__DIR__ . "/controllers/adminController.php");
+        $adminPagina = new AdminController();
+        $adminPagina->editSkill();
+        break;    
     default:
         // Send a 404 header and output an error message
         header("HTTP/1.0 404 Not Found");

@@ -1,8 +1,25 @@
 <?php
 
+require_once __DIR__ . '/../models/skillsModel.php';
+
 class OverMijController {
+
+    private $skillModel;
+
+    public function __construct() {
+        $this->skillModel = new SkillModel();
+    }
+
     public function index(): void {
         $title = "Over Mij";
+        $skills = $this->skillModel->getAllSkills(); // Haal de skills op uit de database
+        
+        // Bouw de HTML voor de skills dynamisch op
+        $skillList = "";
+        foreach ($skills as $skill) {
+            $skillList .= "<li>" . htmlspecialchars($skill['skill_name']) . "</li>";
+        }
+
         $content = "
         <main class=\"main-2\">
             <h1>Over Mij</h1>
@@ -15,14 +32,13 @@ class OverMijController {
                 <div class=\"space\"></div>
                 <div class=\"skills\">
                     <h2>Skills</h2>
-                <ul class=\"skill-list\">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>PHP</li><li>PHP</li><li>PHP</li><li>PHP</li>
-                </ul>
+                    <ul class=\"skill-list\">
+                        $skillList
+                    </ul>
+                </div>
             </div>
         </main>";
 
-        include(__DIR__ . "/../views/index.view.php");
+        include(__DIR__ . '/../views/index.view.php');
     }
 }
