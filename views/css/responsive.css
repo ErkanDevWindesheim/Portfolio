@@ -1,5 +1,52 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+
+  .content-container {
+    display: flex; /* Alle elementen nemen nu de volledige breedte in */
+    flex-direction: row;
+    gap: 10px; /* Kleinere ruimte tussen secties */
+  }
+
+  .bio h2 {
+    font-size: 20px; /* Kleinere kop */
+  }
+
+  .bio p {
+    font-size: 14px; /* Kleinere tekstgrootte */
+    max-width: 100%; /* Volledige breedte benutten op mobiel */
+  }
+
+  /* Maak de button groter en makkelijker klikbaar */
+  .bio button {
+    padding: 10px;
+    font-size: 14px;
+    width: 100%; /* Volledige breedte op mobiel */
+  }
+
+  /* Verwijder of verklein de verticale ruimte */
+  .space {
+    display: none; /* Verberg de scheidingslijn op mobiele apparaten */
+  }
+
+  .skills h2 {
+    font-size: 20px; /* Kleinere kop voor de skills sectie */
+  }
+
+  .skills ul li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .skills ul {
+    padding: 0;
+  }
+
+  /* de skill-list ook goed werkt op kleinere schermen */
+  .skill-list {
+    grid-template-columns: 1fr; /* Elke skill neemt nu de volledige breedte in */
+    gap: 10px; /* Minder ruimte tussen skills */
+  }
+
   .project-section {
     grid-template-columns: 1fr !important; /* Display 1 project per row */
   }
@@ -75,7 +122,25 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) and (max-width: 768px) {
+@media only screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
   .project-section {
     grid-template-columns: 1fr !important; /* Still display 1 project per row */
   }

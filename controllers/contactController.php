@@ -18,7 +18,11 @@ class ContactController {
             <div class=\"contact-section\">
                 <div class=\"contact-box\">
                     <strong>E-mail:</strong><p>1213580@student.windesheim.nl</p>
-                    <strong>Social Media:</strong><p>@ErkanWindesheim</p>
+                    <strong>Social Media:</strong>
+                    <p class=\"social_links\">
+                        <a href=\"https://www.linkedin.com/in/erkan-aslantas-38ab86333/\" alt=\"Linkedln logo\" target=\"_blank\"><img class=\"linkedln\"s src=\"/media/tinified/LinkedIn_logo.png\"></a>
+                        <a href=\"https://github.com/ErkanDevWindesheim\" alt=\"Github logo\" target=\"_blank\"><img class=\"github\"s src=\"/media/tinified/github_logo.png\"></a>
+                    </p>
                     <strong>School:</strong><p>Windesheim Almere Stad</p>
                 </div>
             </div>

@@ -5,7 +5,6 @@
             <?php foreach ($projects as $project): ?>
                 <div class="project-box">
                     <h2 class="project-title"><?= htmlspecialchars($project['title']); ?></h2>
-                    <p><?= htmlspecialchars($project['description']); ?></p>
                     <a href="/project?id=<?= htmlspecialchars($project['id']); ?>">
                         <button>Bekijk Project</button>
                     </a>
