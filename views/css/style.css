@@ -495,6 +495,10 @@ tr, table, td {
   height: 50px;
 }
 
+#technology {
+  width: 100%;
+}
+
 /* Footer */
 footer {
   background-color: #f0f0f0;

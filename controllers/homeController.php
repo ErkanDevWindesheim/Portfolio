@@ -9,10 +9,15 @@ class HomeController {
                     <h1>Erkan Aslantas</h1>      
                     <p><i>Never jump the fence unless you're willing to face what's on the other side.</i></p>
                 <div class=\"buttons\">
-                    <a href=\"/project\"><button>Bekijk Portfolio</button></a>
+                    <a href=\"/project\">
+                        <button>
+                        <span class=\"material-symbols-outlined\">menu_book</span>
+                        Bekijk Portfolio
+                        </button>
+                    </a>
                     <a href=\"/contact\">
                         <button style=\"display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; border: none;\">
-                            <img src=\"media/mail.png\" alt=\"My Icon\" class=\"icon-contact\">
+                            <span class=\"material-symbols-outlined\">contacts</span>
                         Neem Contact op
                         </button>
                     </a>
