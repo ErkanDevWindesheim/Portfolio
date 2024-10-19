@@ -16,17 +16,26 @@ body {
 /* Header */
 header {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two columns: logo and nav */
+  grid-template-columns: 1fr 1fr !important; /* Two columns: logo and nav */
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 0.8rem;
   background-color: #f0f0f0;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0.01rem solid #ccc;
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 1.3rem;
   font-weight: bold;
+}
+
+.icon-contact {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  text-align: center;
 }
 
 
@@ -38,19 +47,20 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 20px;
+  margin-left: 1.2rem;
+  font-weight: bold;
 }
 
 nav ul li a {
   text-decoration: none;
   color: #333;
-  font-size: 18px;
+  font-size: 1.1rem;
 }
 
 /* Main content layout with grid */
 main {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns: bio section and image */
+  grid-template-columns: 1fr 1fr !important; /* Two equal columns: bio section and image */
   place-items: center;
   flex: 1;
   padding: 50px;
@@ -175,8 +185,8 @@ h1.project-title {
   flex: 2;
   gap: 30px;
   background-color: gray;
-  width: fit-content;
-  height: fit-content;
+  width: max-content;
+  height: max-content;
   padding: 2rem;
   border-radius: 20%;
   box-shadow: 5px 5px #000;
@@ -331,7 +341,7 @@ h1.project-title {
   grid-template-columns: repeat(
     auto-fit,
     minmax(150px, 1fr)
-  ); /* Responsive skill list */
+  ) !important; /* Responsive skill list */
   gap: 20px;
 }
 
