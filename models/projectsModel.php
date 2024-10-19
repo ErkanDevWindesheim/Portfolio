@@ -72,4 +72,26 @@ class ProjectModel extends Database {
         $stmt = $this->pdo->prepare($sql);
         return $stmt->execute([':id' => $id]);
     }
+
+    // READ: Haal projecten op op basis van technologie
+    public function getProjectsByTechnology($technology) {
+        // Bouw de LIKE-query met spaties en komma's aan beide zijden van de technologie
+        $sql = "SELECT * FROM projects 
+                WHERE technologies_used LIKE :technology 
+                OR technologies_used LIKE :technology_start 
+                OR technologies_used LIKE :technology_end 
+                OR technologies_used LIKE :technology_exact";
+    
+        $stmt = $this->pdo->prepare($sql);
+    
+        // Plaats houders voor technologieën met verschillende patronen
+        $stmt->execute([
+            ':technology' => "%, " . $technology . ",%",
+            ':technology_start' => $technology . ",%",
+            ':technology_end' => "%, " . $technology,
+            ':technology_exact' => $technology
+        ]);
+    
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

@@ -12,14 +12,24 @@ class ProjectController {
     }
 
     public function index(): void {
-        $projects = $this->model->getAllProjects();
-
+        // Haal de geselecteerde technologie uit de query-parameters
+        $technology = $_GET['technology'] ?? '';
+    
+        // Als er een technologie is geselecteerd, filter projecten op die technologie
+        if (!empty($technology)) {
+            $projects = $this->model->getProjectsByTechnology($technology);
+        } else {
+            // Haal alle projecten op als er geen filter is
+            $projects = $this->model->getAllProjects();
+        }
+    
         $title = "Projects";
+    
         // Output buffering gebruiken om de view-output op te slaan als string
         ob_start();
         include __DIR__ . '/../views/php/projects.view.php';
         $content = ob_get_clean(); // Sla de output op in $content
-        
+    
         include(__DIR__ . "/../views/index.view.php");
     }
 
