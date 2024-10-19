@@ -116,22 +116,36 @@
     padding: 10px; /* Verminder padding */
   }
 
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer {
+    padding: 0.5rem; /* Reduce padding on smaller screens */
+  }
+
+  footer p {
+    font-size: 0.8rem; /* font size for better readability */
+  }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 768px) {
   header {
     flex-direction: column;
+    align-items: center;
   }
 
   nav ul {
     flex-direction: column;
     align-items: center;
-    margin-top: 10px;
+    width: 100%;
   }
 
   nav ul li {
-    margin: 10px 0;
+    margin: 5px 0;
   }
 
   .logo {

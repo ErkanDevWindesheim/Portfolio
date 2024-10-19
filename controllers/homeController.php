@@ -7,13 +7,13 @@ class HomeController {
         <main>
                 <div class=\"bio-section\">
                     <h1>Erkan Aslantas</h1>      
-                    <p>orem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <p><i>Never jump the fence unless you're willing to face what's on the other side.</i></p>
                 <div class=\"buttons\">
-                    <a href=\"/project\"><button>Portfolio</button></a>
+                    <a href=\"/project\"><button>Bekijk Portfolio</button></a>
                     <a href=\"/contact\">
                         <button style=\"display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; border: none;\">
                             <img src=\"media/mail.png\" alt=\"My Icon\" class=\"icon-contact\">
-                        Neem contact
+                        Neem Contact op
                         </button>
                     </a>
                 </div>
