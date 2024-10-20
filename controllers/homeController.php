@@ -10,7 +10,7 @@ class HomeController {
                     <p><i>Never jump the fence unless you're willing to face what's on the other side.</i></p>
                 <div class=\"buttons\">
                     <a href=\"/project\">
-                        <button>
+                        <button style=\"display: flex; align-items: center; justify-content: space-between; padding: 10px 20px; border: none;\">
                         <span class=\"material-symbols-outlined\">menu_book</span>
                         Bekijk Portfolio
                         </button>
