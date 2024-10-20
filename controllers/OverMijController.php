@@ -25,7 +25,7 @@ class OverMijController {
             <h1>Over Mij</h1>
             <div class=\"content-container\">
                 <div class=\"bio\">
-                    <p><strong>Bio:</strong> Naam: Erkan Aslantas
+                    <p><strong>Bio:</strong><br>Naam: Erkan Aslantas
                         Geboortedatum: 13 juli 2001
                         Geboorteplaats: Blaricum, Nederland
                         Nationaliteit: Turks</p>

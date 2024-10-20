@@ -1,13 +1,40 @@
 /* Poppins font */
+/* https://fonts.google.com/specimen/Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 /* responsive */
 @import url("/views/css/responsive.css");
 
 
+
+
 /* CSS VARIABLE KLEURGEBRUIK */
+
+/* default */
 :root {
-  --bg-color: #ffffff;
+  --bg-color: #4bdb08;
   --text-color: #000000;
+  --btn-background-color: aqua;
+  --btn-text: #000000;
+  --paragraf-color: #333333;
+  --skills-color: #6e6e6e;
+}
+
+/* Light Theme */
+.light-theme {
+  --bg-color: #f0f0f0;
+  --text-color: #333333;
+  --btn-background-color: #007bff;
+  --btn-text: #000000;
+  --paragraf-color: #000000;
+}
+
+/* Dark Theme */
+.dark-theme {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff; 
+  --btn-background-color: #f57c00;
+  --btn-text: #ffffff;
+  --paragraf-color: #000000;
 }
 
 * {
@@ -35,10 +62,60 @@ header {
   flex-direction: column; 
   align-items: center; 
   padding: 0.8rem;
-  border-bottom: 1px solid #ccc;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-bottom: 0.0625em solid var(--text-color);
+}
+
+main {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 4.5rem;
+}
+
+button {
+  border: none;
+  padding: 0.7rem 0.9rem;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
+}
+
+button:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  opacity: 0.9;
+}
+
+a {
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
+  text-decoration: none;
+  padding: 0.1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+p, i {
+  color: var(--paragraf-color);
+}
+
+form {
+  background-color: var(--bg-color);
+  color: var(--paragraf-color);
 }
 
 .logo {
+  text-align: center;
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -53,22 +130,37 @@ header {
 
 
 /* Navigation menu */
-nav ul {
+header nav ul {
   display: flex;
   justify-content: center;
   width: 100%;
   list-style: none;
 }
 
-nav ul li {
+header nav ul li {
   margin-left: 1.2rem;
   font-weight: bold;
 }
 
-nav ul li a {
-  text-decoration: none;
-  color: #333;
-  font-size: 1.1rem;
+header nav ul li button a {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.3s, background-color 0.3s;
+
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
+}
+
+header nav ul li button a:hover {
+  background-color: var(--btn-background-color);
+  color: #fff;
+}
+
+header nav ul li button:hover a:hover {
+  opacity: 0.8;
 }
 
 /* Main content layout with grid */
@@ -77,7 +169,7 @@ main {
   grid-template-columns: 1fr 1fr !important; /* Two equal columns: bio section and image */
   place-items: center;
   flex: 1;
-  padding: 50px;
+  padding: 4.5rem;
 }
 
 .main-2 {
@@ -86,15 +178,15 @@ main {
   justify-content: center;
   align-items: center;
   flex: 1;
-  padding: 35px;
+  padding: 2.9rem;
 }
 
+
 .main-2 form {
-  margin-bottom: 30px;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  margin-bottom: 2.9rem;
+  padding: 1.2rem;
+  border: 0.0625em  solid #ddd;
+  border-radius: 0.3125em;
 }
 
 .main-2 form label {
@@ -104,42 +196,26 @@ main {
 .main-2 form input,
 .main-2 form textarea {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
 }
 
 .main-2 form button {
-  padding: 10px 20px;
-  color: white;
+  padding: 0.7rem 1.3rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2rem;
   cursor: pointer;
-}
-
-.main-2 form button:hover {
-  background-color: #696969;
-}
-
-button {
-  background-color: #696969;
-  color: white;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #4cae4c;
 }
 
 /* Skills lijst stijl */
 .skills-list {
   list-style-type: none;
   padding-left: 0;
+  animation-name: bounce;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transform-origin: bottom; 
 }
 
 .bio-section {
@@ -149,31 +225,32 @@ button:hover {
 }
 
 .skills-list li {
-  background-color: #f1f1f1;
-  padding: 10px;
-  margin-bottom: 5px;
-  border-radius: 5px;
+  background-color: var(--bg-color);
+  padding: 0.7rem;
+  margin-bottom: 0.2rem;
+  border-radius: 0.2rem;
 }
 
 .bio-section h1 {
-  font-size: 48px;
+  font-size: 2rem;
   margin: 0;
 }
 
 .bio-section p {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 1rem;
+  margin: 0.7rem 0;
 }
 
 .buttons {
-  margin-top: 20px;
+  margin-top: 1.1rem;
   display: flex;
+  gap: 0.9rem;
 }
 
 .buttons button {
-  padding: 10px 20px;
-  margin-right: 10px;
-  font-size: 16px;
+  padding: 0.7rem 1.1rem;
+  margin-right: 0.7rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -181,13 +258,13 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
-  padding: 20px;
+  padding: 1.1rem;
 }
 
 h1.project-title {
   text-align: center;
   font-size: 2em;
-  margin-bottom: 20px;
+  margin-bottom: 1.1rem;
 }
 
 .project-box {
@@ -196,17 +273,21 @@ h1.project-title {
   justify-content: center;
   flex-direction: column;
   flex: 2;
-  gap: 30px;
-  background-color: gray;
+  gap: 2rem;
   width: max-content;
   height: max-content;
   padding: 2rem;
   border-radius: 20%;
-  box-shadow: 5px 5px #000;
+  box-shadow: 0.2rem 0.2rem #000;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
+
+
 .project-details {
-  max-width: 800px;
+  max-width: 50rem;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
@@ -216,11 +297,13 @@ h1.project-title {
 
 .project-info {
   text-align: center;
+  color: var(--paragraf-color);
 }
 
 .project-info p {
   font-size: 1.1em;
   margin-bottom: 15px;
+  color: var(--paragraf-color);
 }
 
 .contact-section {
@@ -243,16 +326,9 @@ h1.project-title {
   text-decoration: none;
   border-radius: 5px;
   font-size: 1em;
-}
 
-.project-btn {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.github-btn {
-  background-color: #333;
-  color: #fff;
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
 }
 
 .contact-box {
@@ -303,8 +379,8 @@ h1.project-title {
 .bio button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4a4a4a;
-  color: white;
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -339,8 +415,10 @@ h1.project-title {
 }
 
 .skills ul li {
+  background-color: var(--btn-background-color);
+  color: var(--text-color);
+
   font-size: 18px;
-  background-color: #ddd;
   padding: 10px 0;
   width: auto;
   text-align: center;
@@ -359,12 +437,12 @@ h1.project-title {
 }
 
 .form-container {
-  max-width: 600px;
+  max-width: 37.5rem;
   margin: 0 auto;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background: var(--bg-color);
+  padding: 1.2rem;
+  border-radius: 0.9rem;
+  box-shadow: 0 0.125 0.625 rgba(0, 0, 0, 0.1);
 }
 
 h2 {
@@ -387,45 +465,31 @@ textarea {
   border-radius: 4px;
 }
 
-tr {
-  padding: 20px;
+
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
 }
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  max-width: 10rem;
+  height: auto;
+}
 
 tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-  padding: 1rem;
-  border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-a:hover {
-  color: white;
-}
-
-
-td {
-  max-width: 200px;
-}
-
-tr, table, td {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  padding: 20px;
+  background-color: var(--bg-color);
 }
 
 
 /* Admin pagina stijlen */
 .admin-container {
-  max-width: 800px; /* Maximum breedte voor de admin inhoud */
-  margin: 0 auto; /* Centreert de container horizontaal */
+  max-width: 55rem;
+  margin: 0 auto;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
@@ -442,21 +506,21 @@ tr, table, td {
 
 /* Tabellen styling */
 .admin-container table {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-collapse: collapse;
+  width: 100%; 
+  border-collapse: collapse; 
+  max-width: 800px; 
+  margin: 0 auto; 
 }
 
 .admin-container th, .admin-container td {
-  padding: 100px;
-  text-align: left;
-  border: 1px solid #ccc;
+  padding: 10px; /* Reduce padding for better fit */
+  text-align: left; /* Align text to the left */
+  border: 1px solid #ccc; /* Keep border style */
 }
 
 .admin-container th {
-  background-color: #007bff; /* Kop achtergrondkleur */
-  color: white; /* Kop tekstkleur */
+  background-color: #007bff;
+  color: white; 
 }
 
 .admin-container tr {
@@ -465,11 +529,14 @@ tr, table, td {
 }
 
 .admin-container tr:nth-child(even) {
-  background-color: #f2f2f2; /* Afwisselende rij achtergrondkleur */
+  background-color: #f2f2f2; /* Light background for even rows */
 }
 
 .admin-container .actions {
   display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
   gap: 10px; /* Ruimte tussen knoppen */
 }
 
@@ -490,6 +557,7 @@ tr, table, td {
 .social_links {
   display: flex;
   flex-direction: row;
+  gap: 0.8rem;
 }
 
 /* Linkedln logo */
@@ -510,19 +578,47 @@ tr, table, td {
 
 /* Footer */
 footer {
-  background-color: #f0f0f0;
   text-align: center;
   padding: 1rem;
-  border-top: 1px solid #ccc;
   display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center;
+
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 1px solid var(--text-color);
 }
 
 footer a {
   padding: 0;
+  color: var(--btn-text);
 }
 
+.dark-theme footer p {
+  color: var(--text-color);
+}
 
+.dark-theme p {
+  color: var(--text-color);
+}
 
+.dark-theme td {
+  color: var(--text-color);
+}
+
+.dark-theme i { 
+  color: var(--text-color);
+}
+
+.dark-theme strong {
+  color: var(--text-color);
+}
+
+.dark-theme label {
+  color: var(--text-color);
+}
+
+.dark-theme .skill-list ul li {
+  color: var(--text-color);
+}

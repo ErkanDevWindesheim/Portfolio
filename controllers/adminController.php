@@ -43,6 +43,7 @@ class AdminController {
             </form>
     
             <h2>Projecten Overzicht</h2>
+            <p><strong>Beter te zien op grotere schermen</strong></p>
             <table>
                 <tr>
                     <th>Titel</th>
@@ -61,9 +62,11 @@ class AdminController {
                 <td>" . htmlspecialchars($project['technologies_used']) . "</td>
                 <td><a href='" . htmlspecialchars($project['project_link']) . "' target='_blank'>Bekijk Project</a></td>
                 <td><a href='" . htmlspecialchars($project['github_link']) . "' target='_blank'>Bekijk op GitHub</a></td>
-                <td class='actions'>
-                    <a href='/admin/editproject?id=" . htmlspecialchars($project['id']) . "'>Bewerk</a>
-                    <a href='/admin/deleteproject?id=" . htmlspecialchars($project['id']) . "' onclick='return confirm(\"Weet je zeker dat je dit project wilt verwijderen?\")'>Verwijder</a>
+                <td>
+                    <div class=\"actions\">
+                        <a href='/admin/editproject?id=" . htmlspecialchars($project['id']) . "'>Bewerk</a>
+                        <a href='/admin/deleteproject?id=" . htmlspecialchars($project['id']) . "' onclick='return confirm(\"Weet je zeker dat je dit project wilt verwijderen?\")'>Verwijder</a>
+                    </div>
                 </td>
             </tr>";
         }
