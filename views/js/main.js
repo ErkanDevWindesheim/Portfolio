@@ -29,3 +29,4 @@ themeToggleBtn.addEventListener('click', () => {
         localStorage.removeItem('theme');  // Verwijder opgeslagen thema
     }
 });
+/* */

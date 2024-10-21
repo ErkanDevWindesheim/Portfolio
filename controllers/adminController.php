@@ -16,6 +16,14 @@ class AdminController {
         $title = "Admin Paneel";
         $projects = $this->projectModel->getAllProjects();
         $skills = $this->skillModel->getAllSkills();
+
+        // Controleren op eventuele succes- of foutmeldingen
+        $message = '';
+        if (isset($_GET['success'])) {
+            $message = "<span class='succus-message'>" . htmlspecialchars($_GET['success']) . "</span>";
+        } elseif (isset($_GET['error'])) {
+            $message = "<span class='error-message'>" . htmlspecialchars($_GET['error']) . "</span>";
+        }
     
         // Hoofdinformatie container
         $content = "
@@ -40,6 +48,8 @@ class AdminController {
                 <input type='url' id='github_link' name='github_link' placeholder='https://github.com/example' required>
     
                 <button type='submit'>Voeg Project Toe</button>
+
+                $message
             </form>
     
             <h2>Projecten Overzicht</h2>
@@ -79,10 +89,10 @@ class AdminController {
         <form action='/admin/skill/create' method='POST' class='form-container'>
             <label for='skill_name'>Naam Vaardigheid:</label>
             <input type='text' id='skill_name' name='skill_name' required>
-    
             <button type='submit'>Voeg Vaardigheid Toe</button>
+
+            $message
         </form>
-    
         <h2>Vaardigheden Overzicht</h2>
         <table>
             <tr>
@@ -116,8 +126,15 @@ class AdminController {
             $project_link = $_POST['project_link'] ?? '';
             $github_link = $_POST['github_link'] ?? '';
 
-            $this->projectModel->addProject($title, $description, $technologies_used, $project_link, $github_link);
-            header('Location: /admin?succes');
+            
+            
+            $projectAddd = $this->projectModel->addProject($title, $description, $technologies_used, $project_link, $github_link);
+
+            if($projectAddd) {
+                header('Location: /admin?success=Project%20succesvol%20toegevoegd');
+            } else {
+                header('Location: /admin?error=Er%20is%20iets%20mis%20gegaan.%20Neem%20contact%20op%20met%20ontwikkelaars.');
+            }
             exit;
         }
     }
@@ -127,8 +144,16 @@ class AdminController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['skill_name'] ?? '';
 
-            $this->skillModel->addSkill($name);
-            header('Location: /admin?succes');
+            // Check of er al 3 vaardigheden zijn toegevoegd
+            $skillAdded = $this->skillModel->addSkill($name);
+
+            if ($skillAdded) {
+                // Gebruik een queryparameter om succesmelding door te geven
+                header('Location: /admin?success=Vaardigheid%20succesvol%20toegevoegd');
+            } else {
+                // Gebruik een queryparameter om foutmelding door te geven
+                header('Location: /admin?error=Het%20limiet%20van%203%20vaardigheden%20is%20bereikt');
+            }
             exit;
         }
     }

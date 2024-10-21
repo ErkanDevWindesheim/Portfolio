@@ -7,13 +7,22 @@ class SkillModel extends Database {
     }
 
     public function addSkill($skill_name) {
+        // Stap 1: Controleer het huidige aantal vaardigheden in de tabel
+        $sql = "SELECT COUNT(*) as skill_count FROM skills";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        // Stap 2: Als er al 3 of meer vaardigheden zijn, geef een foutmelding terug
+        if ($result['skill_count'] >= 3) {
+            return false; // Geen vaardigheid toevoegen
+        }
+    
+        // Stap 3: Voeg de nieuwe vaardigheid toe als de limiet niet is bereikt
         $sql = "INSERT INTO skills (skill_name) VALUES (:skill_name)";
         $stmt = $this->pdo->prepare($sql);
-        
-        // Voer de query uit met de juiste parameter
-        return $stmt->execute([
-            ':skill_name' => $skill_name
-        ]);
+    
+        return $stmt->execute([':skill_name' => $skill_name]);
     }
 
     public function deleteSkill(int $id): bool {
