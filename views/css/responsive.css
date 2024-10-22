@@ -102,12 +102,12 @@
   .project-links a {
     width: 100%;
     text-align: center;
-    padding: 12px;
+    padding: 0.75rem;
     font-size: 1.1em;
   }
 
   .form-container {
-    padding: 15px;
+    padding: 0.938rem;
   }
   .admin-container {
     padding: 0.625rem; /* Minder padding op kleine schermen */
