@@ -256,7 +256,7 @@ class AdminController {
         $skill = $this->skillModel->getSkillById($id);
 
         if (!$skill) {
-            header("HTTP/1.0 404 Not Found"); // Stuur 404 als de vaardigheid niet bestaat
+            header("location: /404"); // Stuur 404 als de vaardigheid niet bestaat
             exit;
         }
 

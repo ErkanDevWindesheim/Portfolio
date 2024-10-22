@@ -70,6 +70,4 @@ class ProjectController {
         // Laad de view met de inhoud
         include(__DIR__ . "/../views/index.view.php");
     }
-
-
 }

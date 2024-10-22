@@ -15,7 +15,6 @@ switch ($url) {
         $HomePagina = new HomeController();
         $HomePagina->index();
         break;
-        
     case '/project':
     case '/projects':
         require(__DIR__ . "/controllers/projectController.php");

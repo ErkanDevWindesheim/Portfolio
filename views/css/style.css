@@ -109,7 +109,6 @@ a:hover {
   opacity: 0.8;
 }
 
-
 form {
   background-color: var(--primary-color);
   color: var(--paragraf-color);
@@ -260,6 +259,9 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
   padding: 1.1rem;
+  border: 2px solid var(--btn-background-color);
+  background-color: var(--btn-background-color);
+  border-radius: 2rem 2rem;
 }
 
 h1.project-title {

@@ -2,7 +2,6 @@
 
 
 class errorController {
-    
 
     public function index() {
 
