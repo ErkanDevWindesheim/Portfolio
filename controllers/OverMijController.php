@@ -23,8 +23,8 @@ class OverMijController {
         $content = "
         <main class=\"main-2\">
             <h1>Over Mij</h1>
-            <div class=\"content-container\">
-                <div class=\"bio\">
+            <section class=\"aboutme-section\">
+                <section class=\"bio\">
                     <p><strong>Bio:</strong><br>Naam: Erkan Aslantas
                         Geboortedatum: 13 juli 2001
                         Geboorteplaats: Blaricum, Nederland
@@ -32,14 +32,14 @@ class OverMijController {
                     <a href=\"/media/CV_Erkan_Aslantas.pdf\" download>
                         <button>CV downloaden</button>
                     </a>
-                </div>
+                </section>
                 <div class=\"space\"></div>
-                <div class=\"skills\">
+                <section class=\"skills\">
                     <h2>Skills</h2>
                     <ul class=\"skill-list\">
                         $skillList
                     </ul>
-                </div>
+                </section>
             </div>
         </main>";
 

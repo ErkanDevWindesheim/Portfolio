@@ -81,7 +81,8 @@ switch ($url) {
         break;    
     default:
         // Send a 404 header and output an error message
-        header("HTTP/1.0 404 Not Found");
-        echo "404 - Page not found";
+        require(__DIR__ . "/controllers/errorController.php");
+        $errorPagina = new errorController();
+        $errorPagina->index();
         break;
 }

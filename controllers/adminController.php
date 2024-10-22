@@ -17,12 +17,22 @@ class AdminController {
         $projects = $this->projectModel->getAllProjects();
         $skills = $this->skillModel->getAllSkills();
 
-        // Controleren op eventuele succes- of foutmeldingen
-        $message = '';
-        if (isset($_GET['success'])) {
-            $message = "<span class='succus-message'>" . htmlspecialchars($_GET['success']) . "</span>";
-        } elseif (isset($_GET['error'])) {
-            $message = "<span class='error-message'>" . htmlspecialchars($_GET['error']) . "</span>";
+        // Separate success or error messages for projects and skills
+        $Projectmessage = '';
+        $Skillsmessage = '';
+
+        // Check for project success or error
+        if (isset($_GET['project_success'])) {
+            $Projectmessage = "<span class='success-message'>" . htmlspecialchars($_GET['project_success']) . "</span>";
+        } elseif (isset($_GET['project_error'])) {
+            $Projectmessage = "<span class='error-message'>" . htmlspecialchars($_GET['project_error']) . "</span>";
+        }
+
+        // Check for skill success or error
+        if (isset($_GET['skill_success'])) {
+            $Skillsmessage = "<span class='success-message'>" . htmlspecialchars($_GET['skill_success']) . "</span>";
+        } elseif (isset($_GET['skill_error'])) {
+            $Skillsmessage = "<span class='error-message'>" . htmlspecialchars($_GET['skill_error']) . "</span>";
         }
     
         // Hoofdinformatie container
@@ -49,7 +59,7 @@ class AdminController {
     
                 <button type='submit'>Voeg Project Toe</button>
 
-                $message
+                $Projectmessage
             </form>
     
             <h2>Projecten Overzicht</h2>
@@ -91,7 +101,7 @@ class AdminController {
             <input type='text' id='skill_name' name='skill_name' required>
             <button type='submit'>Voeg Vaardigheid Toe</button>
 
-            $message
+            $Skillsmessage
         </form>
         <h2>Vaardigheden Overzicht</h2>
         <table>
@@ -128,12 +138,12 @@ class AdminController {
 
             
             
-            $projectAddd = $this->projectModel->addProject($title, $description, $technologies_used, $project_link, $github_link);
+            $projectAdded = $this->projectModel->addProject($title, $description, $technologies_used, $project_link, $github_link);
 
-            if($projectAddd) {
-                header('Location: /admin?success=Project%20succesvol%20toegevoegd');
+            if ($projectAdded) {
+                header('Location: /admin?project_success=Project%20successfully%20added');
             } else {
-                header('Location: /admin?error=Er%20is%20iets%20mis%20gegaan.%20Neem%20contact%20op%20met%20ontwikkelaars.');
+                header('Location: /admin?project_error=Something%20went%20wrong.%20Contact%20developers.');
             }
             exit;
         }
@@ -148,11 +158,9 @@ class AdminController {
             $skillAdded = $this->skillModel->addSkill($name);
 
             if ($skillAdded) {
-                // Gebruik een queryparameter om succesmelding door te geven
-                header('Location: /admin?success=Vaardigheid%20succesvol%20toegevoegd');
+                header('Location: /admin?skill_success=Skill%20successfully%20added');
             } else {
-                // Gebruik een queryparameter om foutmelding door te geven
-                header('Location: /admin?error=Het%20limiet%20van%203%20vaardigheden%20is%20bereikt');
+                header('Location: /admin?skill_error=Limit%20of%203%20skills%20reached');
             }
             exit;
         }

@@ -1,5 +1,5 @@
 <header>
-    <div class="logo">Portfolio</div>
+    <a class="logo" href="/">Portfolio</a>
     <nav>
         <ul>
             <li><a href="/home">Home</a></li>

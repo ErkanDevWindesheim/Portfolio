@@ -12,21 +12,31 @@ class ContactController {
 
     public function index(): void {
         $title = "Contact";
+
+        // Controleer op succesbericht
+        $successMessage = isset($_GET['success']) ? "Bericht succesvol verzonden!" : '';
+
         $content = "
         <main class=\"main-2\">
             <h1>Contact</h1>
-            <div class=\"contact-section\">
+            <section class=\"contact-section\">
                 <div class=\"contact-box\">
                     <strong>E-mail:</strong><p>1213580@student.windesheim.nl</p>
                     <strong>Social Media:</strong>
                     <p class=\"social_links\">
-                        <a href=\"https://www.linkedin.com/in/erkan-aslantas-38ab86333/\" alt=\"Linkedln logo\" target=\"_blank\"><img class=\"linkedln\"s src=\"/media/tinified/LinkedIn_logo.png\"></a>
-                        <a href=\"https://github.com/ErkanDevWindesheim\" alt=\"Github logo\" target=\"_blank\"><img class=\"github\"s src=\"/media/tinified/github_logo.png\"></a>
+                        <a href=\"https://www.linkedin.com/in/erkan-aslantas-38ab86333/\" alt=\"LinkedIn logo\" target=\"_blank\"><img class=\"linkedln\" src=\"/media/tinified/LinkedIn_logo.png\"></a>
+                        <a href=\"https://github.com/ErkanDevWindesheim\" alt=\"Github logo\" target=\"_blank\"><img class=\"github\" src=\"/media/tinified/github_logo.png\"></a>
                     </p>
                     <strong>School:</strong><p>Windesheim Almere Stad</p>
                 </div>
-            </div>
-            
+            </section>";
+
+        // Succesbericht weergeven als het er is
+        if ($successMessage) {
+            $content .= "<p class=\"success-message\">$successMessage</p>";
+        }
+
+        $content .= "
             <form action=\"contact?create\" method=\"POST\" autocomplete=\"on\">
                 <label for=\"name\">Naam:</label><br>
                 <input type=\"text\" id=\"name\" name=\"name\" required><br>
@@ -40,28 +50,26 @@ class ContactController {
                 <button type=\"submit\">verzenden</button>
             </form>
         </main>";
-        
 
         include(__DIR__ . "/../views/index.view.php");
     }
 
     public function create(): void {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Use 'name' to match the database column, not 'naam'
             $name = $_POST['name'] ?? '';
             $email = $_POST['email'] ?? '';
             $message = $_POST['message'] ?? '';
-    
-            // Call the model method to add the contact
+
+            // Hier zou je validatie en sanitizing moeten toepassen
+
             $success = $this->model->addContact($name, $email, $message);
-    
+
             if ($success) {
-                // Redirect to the contact page
-                header("Location: /contact?succuss");
+                header("Location: /contact?success");
                 exit;
             } else {
-                // Handle failure case
-                echo "Failed to add contact.";
+                // Hier kun je een foutmelding toevoegen
+                echo "Het toevoegen van contact is mislukt.";
             }
         }
     }

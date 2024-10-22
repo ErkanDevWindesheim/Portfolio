@@ -11,8 +11,8 @@
 
 /* default */
 :root {
-  --bg-color: #4bdb08;
-  --text-color: #000000;
+  --primary-color: #4bdb08;
+  --text-primary: #000000;
   --btn-background-color: aqua;
   --btn-text: #000000;
   --paragraf-color: #333333;
@@ -21,8 +21,8 @@
 
 /* Light Theme */
 .light-theme {
-  --bg-color: #f0f0f0;
-  --text-color: #333333;
+  --primary-color: #f0f0f0;
+  --text-primary: #333333;
   --btn-background-color: #007bff;
   --btn-text: #000000;
   --paragraf-color: #000000;
@@ -30,8 +30,8 @@
 
 /* Dark Theme */
 .dark-theme {
-  --bg-color: #1e1e1e;
-  --text-color: #ffffff; 
+  --primary-color: #1e1e1e;
+  --text-primary: #ffffff; 
   --btn-background-color: #f57c00;
   --btn-text: #ffffff;
   --paragraf-color: #000000;
@@ -49,8 +49,8 @@ body {
   display: flex;
   flex-direction: column;
 
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary);
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -63,14 +63,14 @@ header {
   align-items: center; 
   padding: 0.8rem;
 
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-bottom: 0.0625em solid var(--text-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  border-bottom: 0.0625em solid var(--text-primary);
 }
 
 main {
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary);
   padding: 4.5rem;
 }
 
@@ -87,6 +87,9 @@ button {
 }
 
 button:hover {
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
   opacity: 0.9;
@@ -96,6 +99,7 @@ a {
   background-color: var(--btn-background-color);
   color: var(--btn-text);
   text-decoration: none;
+  cursor: pointer;
   padding: 0.1rem;
   border-radius: 4px;
   transition: background-color 0.3s, color 0.3s;
@@ -105,16 +109,14 @@ a:hover {
   opacity: 0.8;
 }
 
-p, i {
-  color: var(--paragraf-color);
-}
 
 form {
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
   color: var(--paragraf-color);
 }
 
 .logo {
+  background-color: unset;
   text-align: center;
   font-size: 1.3rem;
   font-weight: bold;
@@ -177,7 +179,6 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
   padding: 2.9rem;
 }
 
@@ -225,7 +226,7 @@ main {
 }
 
 .skills-list li {
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
   padding: 0.7rem;
   margin-bottom: 0.2rem;
   border-radius: 0.2rem;
@@ -272,16 +273,15 @@ h1.project-title {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  flex: 2;
   gap: 2rem;
-  width: max-content;
-  height: max-content;
+  max-width: 20rem;
+  max-height: 20rem;
   padding: 2rem;
   border-radius: 20%;
   box-shadow: 0.2rem 0.2rem #000;
 
-  background-color: var(--bg-color);
-  color: var(--text-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary);
 }
 
 
@@ -348,7 +348,7 @@ h1.project-title {
 }
 
 /* Bio and skills sections */
-.content-container {
+.aboutme-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -416,7 +416,7 @@ h1.project-title {
 
 .skills ul li {
   background-color: var(--btn-background-color);
-  color: var(--text-color);
+  color: var(--text-primary);
 
   font-size: 18px;
   padding: 10px 0;
@@ -439,7 +439,7 @@ h1.project-title {
 .form-container {
   max-width: 37.5rem;
   margin: 0 auto;
-  background: var(--bg-color);
+  background: var(--primary-color);
   padding: 1.2rem;
   border-radius: 0.9rem;
   box-shadow: 0 0.125 0.625 rgba(0, 0, 0, 0.1);
@@ -482,7 +482,7 @@ td, th {
 }
 
 tr:nth-child(even) {
-  background-color: var(--bg-color);
+  background-color: var(--primary-color);
 }
 
 
@@ -576,7 +576,7 @@ tr:nth-child(even) {
   width: 100%;
 }
 
-.succus-message {
+.success-message {
   color: green;
   text-align: center;
   width: 100%;
@@ -588,6 +588,25 @@ tr:nth-child(even) {
   width: 100%;
 }
 
+.button-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 1.1rem;
+  border: none;
+}
+
+a.button-style {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--btn-background-color);
+  color: var(--btn-text);
+  text-decoration: none;
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -597,9 +616,9 @@ footer {
   align-items: center; 
   justify-content: center;
 
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  border-top: 1px solid var(--text-color);
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  border-top: 1px solid var(--text-primary);
 }
 
 footer a {
@@ -608,29 +627,34 @@ footer a {
 }
 
 .dark-theme footer p {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
-.dark-theme p {
-  color: var(--text-color);
-}
+/* .dark-theme p {
+  color: var(--text-primary);
+} */
+
+/* .dark-theme strong {
+  color: var(--text-primary);
+} */
 
 .dark-theme td {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .dark-theme i { 
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
-.dark-theme strong {
-  color: var(--text-color);
-}
 
 .dark-theme label {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .dark-theme .skill-list ul li {
-  color: var(--text-color);
+  color: var(--text-primary);
+}
+
+.dark-theme .main-2 .contact-section .contact-box {
+  color: var(--text-primary);
 }
