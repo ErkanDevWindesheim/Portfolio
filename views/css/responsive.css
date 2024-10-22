@@ -22,28 +22,28 @@
     flex-wrap: nowrap; 
     gap: 1.5rem; 
     justify-content: flex-start; 
-    margin-top: 10px; 
+    margin-top: 0.625rem; 
   }
 
   .content-container {
     display: flex; /* Alle elementen nemen nu de volledige breedte in */
     flex-direction: row;
-    gap: 10px; /* Kleinere ruimte tussen secties */
+    gap: 0.625rem; /* Kleinere ruimte tussen secties */
   }
 
   .bio h2 {
-    font-size: 20px; /* Kleinere kop */
+    font-size: 1.25rem; /* Kleinere kop */
   }
 
   .bio p {
-    font-size: 14px; /* Kleinere tekstgrootte */
+    font-size: 0.875rem; /* Kleinere tekstgrootte */
     max-width: 100%; /* Volledige breedte benutten op mobiel */
   }
 
   /* Maak de button groter en makkelijker klikbaar */
   .bio button {
-    padding: 10px;
-    font-size: 14px;
+    padding: 0.625rem;
+    font-size: 0.875rem;
     width: 100%; /* Volledige breedte op mobiel */
   }
 
@@ -53,12 +53,12 @@
   }
 
   .skills h2 {
-    font-size: 20px; /* Kleinere kop voor de skills sectie */
+    font-size: 1.25rem; /* Kleinere kop voor de skills sectie */
   }
 
   .skills ul li {
-    font-size: 14px;
-    padding: 8px;
+    font-size: 0.875rem;
+    padding: 0.5;
   }
 
   .skills ul {
@@ -68,7 +68,7 @@
   /* de skill-list ook goed werkt op kleinere schermen */
   .skill-list {
     grid-template-columns: 1fr; /* Elke skill neemt nu de volledige breedte in */
-    gap: 10px; /* Minder ruimte tussen skills */
+    gap: 0.625rem; /* Minder ruimte tussen skills */
   }
 
   .project-section {
@@ -80,14 +80,14 @@
   }
 
   .main-2 {
-    padding: 10px;
+    padding: 0.625rem;
   }
   h1.project-title {
     font-size: 1.5em;
   }
 
   .project-details {
-    padding: 10px;
+    padding: 0.625rem;
   }
 
   .project-info p {
@@ -96,7 +96,7 @@
 
   .project-links {
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   .project-links a {
@@ -110,12 +110,12 @@
     padding: 15px;
   }
   .admin-container {
-    padding: 10px; /* Minder padding op kleine schermen */
+    padding: 0.625rem; /* Minder padding op kleine schermen */
   }
 
   .admin-container th,
   .admin-container td {
-    font-size: 14px; /* Kleiner lettertype voor mobiel */
+    font-size: 0.875rem; /* Kleiner lettertype voor mobiel */
   }
 
   .admin-container h1,
@@ -138,15 +138,15 @@
   }
 
   .bio-section p {
-    font-size: 16px; /* Verklein de font-grootte */
+    font-size: 1rem; /* Verklein de font-grootte */
   }
 
   .skills-list li {
-    font-size: 16px; /* Verklein de font-grootte */
+    font-size: 1rem; /* Verklein de font-grootte */
   }
 
   .contact-box {
-    padding: 10px; /* Verminder padding */
+    padding: 0.625rem; /* Verminder padding */
   }
 
   header {
@@ -178,11 +178,11 @@
   }
 
   nav ul li {
-    margin: 5px 0;
+    margin: 0.313rem 0;
   }
 
   .logo {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   .project-section {
@@ -190,7 +190,7 @@
   }
   th,
   td {
-    font-size: 14px; /* smaller font for mobile */
+    font-size: 0.875rem; /* smaller font for mobile */
   }
   .action {
     flex-direction: column;    /* Stapel knoppen op hele kleine schermen als dat nodig is */

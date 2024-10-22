@@ -101,7 +101,7 @@ a {
   text-decoration: none;
   cursor: pointer;
   padding: 0.1rem;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -259,7 +259,7 @@ main {
   grid-template-columns: repeat(4, 1fr);
   gap: 3rem;
   padding: 1.1rem;
-  border: 2px solid var(--btn-background-color);
+  border: 0.125rem solid var(--btn-background-color);
   background-color: var(--btn-background-color);
   border-radius: 2rem 2rem;
 }
@@ -291,10 +291,10 @@ h1.project-title {
 .project-details {
   max-width: 50rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .project-info {
@@ -304,7 +304,7 @@ h1.project-title {
 
 .project-info p {
   font-size: 1.1em;
-  margin-bottom: 15px;
+  margin-bottom: 0.938rem;
   color: var(--paragraf-color);
 }
 
@@ -313,20 +313,20 @@ h1.project-title {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .project-links {
   display: flex;
   justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
+  gap: 0.938rem;
+  margin-top: 1.25rem;
 }
 
 .project-links a {
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   font-size: 1em;
 
   background-color: var(--btn-background-color);
@@ -339,14 +339,14 @@ h1.project-title {
 
 .overmij-section {
   width: 100%;
-  padding: 50px;
+  padding: 3.125rem;
   background-color: #f0f0f0;
   text-align: center;
 }
 
 .overmij-section h1 {
-  font-size: 36px;
-  margin-bottom: 40px;
+  font-size: 2.25rem;
+  margin-bottom: 2.5rem;
 }
 
 /* Bio and skills sections */
@@ -354,7 +354,7 @@ h1.project-title {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
   justify-items: center;
   padding: 1rem;
@@ -368,23 +368,23 @@ h1.project-title {
 }
 
 .bio h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
+  font-size: 1.75rem;
+  margin-bottom: 0.625rem;
 }
 
 .bio p {
-  font-size: 18px;
-  margin-bottom: 20px;
-  max-width: 200px;
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+  max-width: 12.5rem;
 }
 
 .bio button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
   background-color: var(--btn-background-color);
   color: var(--btn-text);
   border: none;
-  border-radius: 5px;
+  border-radius: 0.313rem;
   cursor: pointer;
 }
 
@@ -394,8 +394,8 @@ h1.project-title {
 
 /* Divider styling */
 .space {
-  width: 1px;
-  height: 200px;
+  width: 0.063rem;
+  height: 12.5rem;
   background-color: #333;
 }
 
@@ -407,8 +407,8 @@ h1.project-title {
 }
 
 .skills h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .skills ul {
@@ -420,22 +420,22 @@ h1.project-title {
   background-color: var(--btn-background-color);
   color: var(--text-primary);
 
-  font-size: 18px;
-  padding: 10px 0;
+  font-size: 1.125rem;
+  padding: 0.625rem 0;
   width: auto;
   text-align: center;
-  margin-bottom: 10px;
-  padding: 10px;
-  border-radius: 5px;
+  margin-bottom: 0.625rem;
+  padding: 0.625rem;
+  border-radius: 0.313rem;
 }
 
 .skill-list {
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(150px, 1fr)
+    minmax(9.375rem, 1fr)
   ) !important; /* Responsive skill list */
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .form-container {
@@ -453,7 +453,7 @@ h2 {
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   font-weight: bold;
 }
 
@@ -461,13 +461,11 @@ input[type="text"],
 input[type="url"],
 textarea {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 0.625rem;
+  margin-bottom: 0.938rem;
+  border: 0.063rem solid #ccc;
+  border-radius: 0.25rem;
 }
-
-
 
 table {
   border-collapse: collapse;
@@ -476,9 +474,9 @@ table {
 }
 
 td, th {
-  border: 1px solid #dddddd;
+  border: 0.063rem solid #dddddd;
   text-align: left;
-  padding: 8px;
+  padding: 0.5rem;
   max-width: 10rem;
   height: auto;
 }
@@ -492,10 +490,10 @@ tr:nth-child(even) {
 .admin-container {
   max-width: 55rem;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
 }
 
 .admin-container h1, .admin-container h2 {
@@ -503,21 +501,21 @@ tr:nth-child(even) {
 }
 
 .admin-container form {
-  margin: 20px 0;
+  margin: 1.25rem 0;
 }
 
 /* Tabellen styling */
 .admin-container table {
   width: 100%; 
   border-collapse: collapse; 
-  max-width: 800px; 
+  max-width: 50rem; 
   margin: 0 auto; 
 }
 
 .admin-container th, .admin-container td {
-  padding: 10px; /* Reduce padding for better fit */
+  padding: 0.625rem; /* Reduce padding for better fit */
   text-align: left; /* Align text to the left */
-  border: 1px solid #ccc; /* Keep border style */
+  border: 0.063rem solid #ccc; /* Keep border style */
 }
 
 .admin-container th {
@@ -526,7 +524,7 @@ tr:nth-child(even) {
 }
 
 .admin-container tr {
-  padding: 20px;
+  padding: 1.25rem;
   background-color: #f2f2f2; /* Afwisselende rij achtergrondkleur */
 }
 
@@ -539,15 +537,15 @@ tr:nth-child(even) {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 10px; /* Ruimte tussen knoppen */
+  gap: 0.625rem; /* Ruimte tussen knoppen */
 }
 
 .admin-container a {
   text-decoration: none;
   color: #007bff;
-  padding: 5px 10px;
-  border: 1px solid #007bff;
-  border-radius: 4px;
+  padding: 0.313rem 0.625rem;
+  border: 0.063rem solid #007bff;
+  border-radius: 0.25rem;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -564,14 +562,14 @@ tr:nth-child(even) {
 
 /* Linkedln logo */
 .linkedln {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
 }
 
 /* Github logo */
 .github {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem;
+  height: 3.125rem;
 }
 
 #technology {
@@ -602,7 +600,7 @@ a.button-style {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   border: none;
   background-color: var(--btn-background-color);
   color: var(--btn-text);
@@ -620,7 +618,7 @@ footer {
 
   background-color: var(--primary-color);
   color: var(--text-primary);
-  border-top: 1px solid var(--text-primary);
+  border-top: 0.063rem solid var(--text-primary);
 }
 
 footer a {
