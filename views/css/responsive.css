@@ -211,3 +211,17 @@
     grid-template-columns: repeat(4, 1fr) !important; /* Default: 4 columns */
   }
 }
+
+@supports (display: grid) {
+  .project-section {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@supports not (display: grid) {
+  .project-section {
+    display: block; /* Fallback voor oudere browsers */
+    position: relative;
+  }
+}

@@ -47,6 +47,8 @@ body {
   width: 100vw;
   height: 100vh;
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: column;
 
   background-color: var(--primary-color);
@@ -58,7 +60,9 @@ body {
 
 /* Header */
 header {
-  display: flex; 
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox; 
   flex-direction: column; 
   align-items: center; 
   padding: 0.8rem;
@@ -69,9 +73,13 @@ header {
 }
 
 main {
+  display: grid;
+  grid-template-columns: 1fr 1fr !important;
+  place-items: center;
+  flex: 1;
   background-color: var(--primary-color);
   color: var(--text-primary);
-  padding: 4.5rem;
+  padding: 4.5rem;  
 }
 
 button {
@@ -90,6 +98,7 @@ button:hover {
   -webkit-transform: scale(1.05);
   -moz-transform: scale(1.05);
   -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
   transform: scale(1.05);
   transition: transform 0.3s ease-in-out;
   opacity: 0.9;
@@ -132,6 +141,8 @@ form {
 
 /* Navigation menu */
 header nav ul {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -164,17 +175,10 @@ header nav ul li button:hover a:hover {
   opacity: 0.8;
 }
 
-/* Main content layout with grid */
-main {
-  display: grid;
-  grid-template-columns: 1fr 1fr !important; /* Two equal columns: bio section and image */
-  place-items: center;
-  flex: 1;
-  padding: 4.5rem;
-}
-
 .main-2 {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -220,6 +224,8 @@ main {
 
 .bio-section {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: column;
   justify-content: center;
 }
@@ -242,8 +248,10 @@ main {
 }
 
 .buttons {
-  margin-top: 1.1rem;
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  margin-top: 1.1rem;
   gap: 0.9rem;
 }
 
@@ -272,6 +280,8 @@ h1.project-title {
 
 .project-box {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -310,6 +320,8 @@ h1.project-title {
 
 .contact-section {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -318,6 +330,8 @@ h1.project-title {
 
 .project-links {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   justify-content: center;
   gap: 0.938rem;
   margin-top: 1.25rem;
@@ -352,6 +366,8 @@ h1.project-title {
 /* Bio and skills sections */
 .aboutme-section {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.25rem;
@@ -363,6 +379,8 @@ h1.project-title {
 /* Left bio section */
 .bio {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: column;
   align-items: center;
 }
@@ -402,6 +420,8 @@ h1.project-title {
 /* Skills section */
 .skills {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: column;
   align-items: center;
 }
@@ -534,6 +554,8 @@ tr:nth-child(even) {
 
 .admin-container .actions {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
@@ -556,6 +578,8 @@ tr:nth-child(even) {
 
 .social_links {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   flex-direction: row;
   gap: 0.8rem;
 }
@@ -590,6 +614,8 @@ tr:nth-child(even) {
 
 .button-style {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: space-between;
   padding: 0.9rem 1.1rem;
@@ -598,6 +624,8 @@ tr:nth-child(even) {
 
 a.button-style {
   display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   align-items: center;
   justify-content: space-between;
   padding: 0.625rem 1.25rem;
@@ -609,9 +637,11 @@ a.button-style {
 
 /* Footer */
 footer {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   text-align: center;
   padding: 1rem;
-  display: flex;
   flex-direction: column;
   align-items: center; 
   justify-content: center;
