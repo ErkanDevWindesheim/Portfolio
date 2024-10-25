@@ -183,6 +183,12 @@ header nav ul li button:hover a:hover {
   justify-content: center;
   align-items: center;
   padding: 2.9rem;
+  opacity: 0; /* Start hidden */
+  transition: opacity 1.2s ease-in; /* Smooth transition to visible */
+}
+
+.main-2.visible {
+  opacity: 1; /* Fully visible */
 }
 
 

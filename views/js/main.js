@@ -29,3 +29,7 @@ themeToggleBtn.addEventListener('click', () => {
         localStorage.removeItem('theme');  // Verwijder opgeslagen thema
     }
 });
+
+window.addEventListener('load', () => {
+    document.querySelector('.main-2').classList.add('visible');
+  });
