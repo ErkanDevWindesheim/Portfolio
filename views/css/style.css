@@ -109,7 +109,7 @@ a {
   color: var(--btn-text);
   text-decoration: none;
   cursor: pointer;
-  padding: 0.1rem;
+  padding: 0.1rem 0.25rem ;
   border-radius: 0.25rem;
   transition: background-color 0.3s, color 0.3s;
 }

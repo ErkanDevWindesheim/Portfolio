@@ -38,14 +38,14 @@ class ContactController {
 
         $content .= "
             <form action=\"contact?create\" method=\"POST\" autocomplete=\"on\">
-                <label for=\"name\">Naam:</label><br>
+                <label for=\"name\">Naam:</label>
                 <input type=\"text\" id=\"name\" name=\"name\" required><br>
 
-                <label for=\"email\">Email:</label><br>
+                <label for=\"email\">Email:</label>
                 <input type=\"email\" id=\"email\" name=\"email\" required><br>
 
-                <label for=\"message\">Bericht:</label><br>
-                <textarea id=\"message\" name=\"message\" required></textarea><br>
+                <label for=\"message\">Bericht:</label>
+                <textarea id=\"message\" name=\"message\" required></textarea>
 
                 <button type=\"submit\">verzenden</button>
             </form>
